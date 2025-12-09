@@ -2,8 +2,6 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-console.log("MONGODB_URI present?", !!process.env.MONGODB_URI);
-
 const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
@@ -19,7 +17,9 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ limit: "10mb", extended: "false" }));
 
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(
+  "mongodb+srv://bishtprashant:SmooothDB444@mongodatabase.yrs9zfw.mongodb.net/?appName=MongoDataBase"
+);
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Mongoose"));
