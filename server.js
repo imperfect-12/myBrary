@@ -17,9 +17,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ limit: "10mb", extended: "false" }));
 
 const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb+srv://bishtprashant:SmooothDB444@mongodatabase.yrs9zfw.mongodb.net/?appName=MongoDataBase"
-);
+mongoose.connect(process.env.MONGODB_URI);
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Mongoose"));
