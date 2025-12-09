@@ -2,6 +2,8 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+console.log("MONGODB_URI present?", !!process.env.MONGODB_URI);
+
 const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
